@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play and Learn – Bahati Language School</title>
+  <meta name="description" content="A fun mini game from Bahati Language School: learn Spanish, Chinese, Polish and Russian words, earn XP and keep your streak.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap&subset=latin,latin-ext,cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body class="game-body">
+  <div id="app" class="app">
+
+    <!-- Start screen -->
+    <section id="screen-start" class="screen">
+      <a class="back" href="index.html">← Back to school</a>
+      <img class="mascot-big" src="images/bunny.svg" alt="" width="200" height="200">
+      <h1>Word Duel</h1>
+      <p class="sub">Pick a language, beat 10 questions, keep your hearts and earn XP.</p>
+      <div class="stats-row">
+        <span class="pill" title="Best XP">⭐ Best: <b id="best-xp">0</b></span>
+        <span class="pill" title="Days streak">🔥 Streak: <b id="day-streak">0</b></span>
+      </div>
+      <div class="lang-grid">
+        <button class="lang-btn c-es" data-lang="es"><span class="glyph" lang="es">Ñ</span><b>Spanish</b></button>
+        <button class="lang-btn c-zh" data-lang="zh"><span class="glyph" lang="zh">中</span><b>Chinese</b></button>
+        <button class="lang-btn c-pl" data-lang="pl"><span class="glyph" lang="pl">Ł</span><b>Polish</b></button>
+        <button class="lang-btn c-ru" data-lang="ru"><span class="glyph" lang="ru">Я</span><b>Russian</b></button>
+      </div>
+    </section>
+
+    <!-- Lesson screen -->
+    <section id="screen-lesson" class="screen lesson" hidden>
+      <header class="topbar">
+        <button id="quit" class="icon-btn" aria-label="Quit lesson">×</button>
+        <div class="progress" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div>
+        <div class="hearts" id="hearts" aria-live="polite"></div>
+      </header>
+      <div class="lesson-body">
+        <p id="prompt" class="prompt"></p>
+        <div id="question" class="question"></div>
+        <div id="options" class="options"></div>
+      </div>
+      <footer id="feedback" class="feedback">
+        <div class="fb-text"><img id="fb-mascot" src="images/bunny.svg" alt="" width="56" height="56"><div><strong id="fb-title"></strong><p id="fb-detail"></p></div></div>
+        <button id="check" class="btn game-btn" disabled>Check</button>
+      </footer>
+    </section>
+
+    <!-- End screen -->
+    <section id="screen-end" class="screen" hidden>
+      <img id="end-mascot" class="mascot-big" src="images/panda.svg" alt="" width="200" height="200">
+      <h1 id="end-title"></h1>
+      <p id="end-sub" class="sub"></p>
+      <div class="stats-row">
+        <span class="pill">⭐ <b id="end-xp">0</b> XP</span>
+        <span class="pill">🎯 <b id="end-acc">0</b>%</span>
+        <span class="pill">❤ <b id="end-hearts">0</b> left</span>
+      </div>
+      <div class="end-actions">
+        <button id="again" class="btn">Play again</button>
+        <a class="btn btn-ghost" href="index.html#trial">Book a free lesson</a>
+      </div>
+    </section>
+
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
