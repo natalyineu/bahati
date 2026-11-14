@@ -127,3 +127,83 @@ function hearts(el) {
     setTimeout(() => s.remove(), 1800);
   });
 }
+
+// Chat assistant (FAQ bot, runs in the browser)
+(() => {
+  const toggle = document.getElementById("chat-toggle");
+  const panel = document.getElementById("chat-panel");
+  const log = document.getElementById("chat-log");
+  const chips = document.getElementById("chat-chips");
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("chat-input");
+  const PHONE = '<a href="tel:+15550100199">+1 555 010 0199</a>';
+  const MAIL = '<a href="mailto:hello@example.com">hello@example.com</a>';
+  const contact = `Call us on ${PHONE} or email ${MAIL}.`;
+
+  const faq = [
+    { k: ["language", "spanish", "chinese", "mandarin", "polish", "russian", "teach", "offer"],
+      a: "We teach four languages: Spanish, Chinese, Polish and Russian. Which one makes your heart go ♡?" },
+    { k: ["level", "beginner", "advanced", "intermediate", "zero", "a1", "b1", "c1"],
+      a: "All levels are welcome, from complete beginner (A1–A2) to advanced (C1+). We will find your level in a short placement." },
+    { k: ["trial", "free", "try", "test lesson"],
+      a: 'Your first trial lesson is free! Fill in the <a href="#trial">trial form</a> and we will contact you.' },
+    { k: ["price", "cost", "fee", "how much", "pay", "expensive"],
+      a: `Prices depend on the language and format. Ask us for the current prices: ${contact}` },
+    { k: ["group", "private", "one-to-one", "one to one", "individual", "format", "class size"],
+      a: "We offer small groups and private one-to-one lessons. Pick whatever feels comfy." },
+    { k: ["contact", "phone", "call", "email", "mail", "reach", "talk to"],
+      a: `Happy to connect you with a human: ${contact}` },
+    { k: ["schedule", "time", "hour", "when", "book", "start", "date"],
+      a: `To book or ask about times, use the <a href="#trial">trial form</a> or ${contact}` },
+    { k: ["online", "location", "where", "address", "in person", "zoom"],
+      a: `For lesson locations and online options, please check with us: ${contact}` },
+    { k: ["hello", "hi", "hey", "hola", "privet", "cześć", "你好", "привет"],
+      a: "¡Hola! 你好! Cześć! Привет! I know hello in all of them. Ask me about languages, levels, trials or contact details." },
+    { k: ["thank", "thanks", "gracias"],
+      a: "You're welcome! *happy bunny hop* 🐰" }
+  ];
+  const fallback = `Hmm, I am just a little bunny and I am not sure about that one. A human can help: ${contact}`;
+  const suggestions = ["Which languages?", "Is the trial free?", "What levels?", "Prices", "Contact"];
+
+  function add(text, who, html) {
+    const m = document.createElement("div");
+    m.className = "msg " + who;
+    if (html) m.innerHTML = text; else m.textContent = text;
+    log.appendChild(m);
+    log.scrollTop = log.scrollHeight;
+  }
+  function answer(q) {
+    const t = q.toLowerCase();
+    const hit = faq.find((f) => f.k.some((w) => t.includes(w)));
+    return hit ? hit.a : fallback;
+  }
+  function ask(q) {
+    add(q, "user");
+    setTimeout(() => add(answer(q), "bot", true), 350);
+  }
+  suggestions.forEach((s) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = s;
+    b.addEventListener("click", () => ask(s));
+    chips.appendChild(b);
+  });
+  let greeted = false;
+  function open(state) {
+    panel.hidden = !state;
+    toggle.setAttribute("aria-expanded", String(state));
+    if (state) {
+      if (!greeted) { add("Hi, I'm Bonbon! 🐰 Ask me about our languages, levels, free trial or how to contact us.", "bot"); greeted = true; }
+      input.focus();
+    }
+  }
+  toggle.addEventListener("click", () => open(panel.hidden));
+  document.getElementById("chat-close").addEventListener("click", () => { open(false); toggle.focus(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) open(false); });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const q = input.value.trim();
+    if (!q) return;
+    input.value = "";
+    ask(q);
+  });
+})();

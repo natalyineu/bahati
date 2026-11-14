@@ -19,6 +19,7 @@
       <a href="#why">Why Bahati</a>
       <a href="#how">How it works</a>
       <a href="#levels">Levels</a>
+      <a href="#contact">Contact</a>
       <a href="#trial" class="btn btn-small">Free trial</a>
     </nav>
   </header>
@@ -146,11 +147,41 @@
         </form>
       </div>
     </section>
+    <section id="contact" class="alt reveal">
+      <div class="inner">
+        <p class="eyebrow">Say hello</p>
+        <h2>Questions? We love them</h2>
+        <div class="contact-grid">
+          <a class="contact-card" href="tel:+15550100199"><span class="ci">☎</span><h3>Call us</h3><p>+1 555 010 0199</p></a>
+          <a class="contact-card" href="mailto:hello@example.com"><span class="ci">✉</span><h3>General questions</h3><p>hello@example.com</p></a>
+          <a class="contact-card" href="mailto:lessons@example.com"><span class="ci">✎</span><h3>Lessons and trials</h3><p>lessons@example.com</p></a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <div id="chat" class="chat">
+    <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Chat with Bonbon" hidden>
+      <header class="chat-head">
+        <img src="images/bunny.svg" alt="" width="40" height="40">
+        <div><strong>Bonbon</strong><span>Bahati assistant</span></div>
+        <button type="button" id="chat-close" aria-label="Close chat">×</button>
+      </header>
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+      <div id="chat-chips" class="chat-chips"></div>
+      <form id="chat-form" class="chat-form" autocomplete="off">
+        <input id="chat-input" type="text" placeholder="Ask me anything…" aria-label="Your question">
+        <button type="submit" aria-label="Send">➤</button>
+      </form>
+    </div>
+    <button type="button" id="chat-toggle" class="chat-toggle" aria-expanded="false" aria-controls="chat-panel">
+      <img src="images/bunny.svg" alt="" width="44" height="44"><span>Ask Bonbon</span>
+    </button>
+  </div>
 
   <footer>
     <img src="images/favicon.png" alt="" width="32" height="32">
-    <p>&copy; 2026 Bahati Language School · Made with bad puns, coffee and lots of love ♡</p>
+    <p>&copy; 2026 Bahati Language School · +1 555 010 0199 · hello@example.com · Made with bad puns, coffee and lots of love ♡</p>
   </footer>
 
   <script src="script.js"></script>
