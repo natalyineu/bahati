@@ -22,16 +22,21 @@
       <a class="back" href="index.html">← Back to school</a>
       <img class="mascot-big" src="images/bunny.svg" alt="" width="200" height="200">
       <h1>Word Duel</h1>
-      <p class="sub">Pick a language, beat 10 questions, keep your hearts and earn XP.</p>
+      <p class="sub">Pick any two of our languages, beat 10 questions, keep your hearts and earn XP.</p>
       <div class="stats-row">
         <span class="pill" title="Best XP">⭐ Best: <b id="best-xp">0</b></span>
         <span class="pill" title="Days streak">🔥 Streak: <b id="day-streak">0</b></span>
       </div>
-      <div class="lang-grid">
-        <button class="lang-btn c-es" data-lang="es"><span class="glyph" lang="es">Ñ</span><b>Spanish</b></button>
-        <button class="lang-btn c-zh" data-lang="zh"><span class="glyph" lang="zh">中</span><b>Chinese</b></button>
-        <button class="lang-btn c-pl" data-lang="pl"><span class="glyph" lang="pl">Ł</span><b>Polish</b></button>
-        <button class="lang-btn c-ru" data-lang="ru"><span class="glyph" lang="ru">Я</span><b>Russian</b></button>
+      <div class="picker">
+        <p class="pick-title">I speak</p>
+        <div id="chips-from" class="chips"></div>
+        <p class="pick-title">I want to learn</p>
+        <div id="chips-to" class="chips"></div>
+        <p class="pair-label" aria-live="polite"><span id="pair-label"></span></p>
+        <div class="end-actions">
+          <button id="play" class="btn game-btn">Start</button>
+          <button id="random-pair" class="btn btn-ghost" type="button">🎲 Surprise me</button>
+        </div>
       </div>
     </section>
 

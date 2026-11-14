@@ -96,3 +96,14 @@
 @keyframes combo { 0% { transform:translateX(-50%) scale(.3) rotate(-10deg); opacity:0; } 30% { transform:translateX(-50%) scale(1.2) rotate(4deg); opacity:1; } 100% { transform:translateX(-50%) translateY(-60px) scale(1); opacity:0; } }
 .lang-btn:hover .glyph { animation:jump .6s; }
 @media (prefers-reduced-motion:reduce) { .bg-float, .combo { display:none; } .lesson-body *, .feedback, .mascot-big, .mute, #progress-fill::after, .screen-shake, .jump, .wobble-sad { animation:none !important; } }
+
+.picker { width:100%; max-width:560px; }
+.pick-title { margin:14px 0 8px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; font-size:.8rem; }
+.chips { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.chip { display:flex; align-items:center; gap:8px; padding:8px 16px 8px 8px; background:#fff; border:3px solid var(--line); border-bottom-width:5px; border-radius:999px; font:inherit; color:var(--ink); cursor:pointer; transition:transform .15s, border-color .15s, background .15s; }
+.chip .glyph { width:36px; height:36px; margin:0; font-size:1.1rem; background:var(--alt); color:var(--pink); }
+.chip:hover:not(:disabled) { transform:translateY(-3px); border-color:var(--purple); }
+.chip.on { border-color:var(--purple); background:#f0ecff; }
+.chip.on .glyph { background:var(--purple); color:#fff; }
+.chip:disabled { opacity:.35; cursor:not-allowed; }
+.pair-label { margin:22px 0 14px; font:700 1.5rem Fraunces,serif; }
