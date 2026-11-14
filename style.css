@@ -1,4 +1,4 @@
-:root { --ink:#1f2937; --muted:#4b5563; --brand:#b91c1c; --brand-dark:#991b1b; --bg:#ffffff; --alt:#f7f3ee; --line:#e5e0d8; }
+:root { --ink:#1f2937; --muted:#4b5563; --brand:#c2410c; --brand-dark:#9a3412; --bg:#ffffff; --alt:#f7f3ee; --line:#e5e0d8; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
@@ -33,3 +33,5 @@ input, select { font:inherit; padding:10px; border:1px solid #c9c2b8; border-rad
 form .btn { margin-top:16px; }
 #form-msg { margin:8px 0 0; font-weight:600; }
 footer { text-align:center; padding:24px; color:var(--muted); border-top:1px solid var(--line); }
+.logo img { display:block; height:52px; width:auto; }
+.hero-logo { display:block; width:100%; max-width:520px; height:auto; margin:0 auto 24px; }
