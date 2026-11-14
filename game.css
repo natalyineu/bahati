@@ -107,3 +107,23 @@
 .chip.on .glyph { background:var(--purple); color:#fff; }
 .chip:disabled { opacity:.35; cursor:not-allowed; }
 .pair-label { margin:22px 0 14px; font:700 1.5rem Fraunces,serif; }
+
+.mode-link { margin:10px 0 0; padding:8px 18px; font-size:.9rem; box-shadow:inset 0 0 0 2px var(--ink); }
+.toggle { display:flex; justify-content:center; align-items:center; gap:8px; margin:18px 0; color:var(--muted); cursor:pointer; }
+.toggle input { width:20px; height:20px; accent-color:var(--purple); }
+.timer { min-width:48px; font-weight:700; color:var(--muted); text-align:right; }
+.round { margin:-12px 0 14px; color:var(--muted); font-weight:600; }
+.pic-board { display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%; max-width:520px; }
+.pic-col { display:grid; gap:12px; align-content:start; }
+.pic-card, .word-card { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:84px; padding:10px; background:#fff; border:3px solid var(--line); border-bottom-width:6px; border-radius:20px; font:inherit; color:var(--ink); cursor:pointer; transition:transform .12s, border-color .12s, background .12s; animation:slide-in .4s ease both; }
+.pic-card { font-size:2.8rem; line-height:1; }
+.word-card .w-main { font-weight:700; font-size:1.2rem; }
+.word-card small { color:var(--muted); font-size:.8rem; }
+.word-card small.hint { font-style:italic; }
+.pic-card:hover, .word-card:hover { background:#faf7ff; transform:translateY(-2px); }
+.pic-card.sel, .word-card.sel { border-color:var(--purple); background:#f0ecff; transform:scale(1.04); }
+.pic-card.ok, .word-card.ok { border-color:#58cc02; background:#e9f9d8; opacity:.55; pointer-events:none; animation:right-pop .45s ease; }
+.pic-card.bad, .word-card.bad { border-color:#e0245e; background:#ffe4ec; animation:shake .4s; }
+.pic-msg { min-height:1.6em; margin-top:18px; font-weight:600; color:var(--muted); }
+.stars { font-size:3rem; color:#f5b800; letter-spacing:.1em; margin-bottom:10px; animation:jump .8s ease; }
+@media (prefers-reduced-motion:reduce) { .pic-card, .word-card, .stars { animation:none !important; } }
