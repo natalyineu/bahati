@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-hidden="true">
+<style>.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}@media (prefers-reduced-motion:reduce){.eye{animation:none}}</style>
 <ellipse cx="62" cy="78" rx="17" ry="17" fill="#9fe3d3" transform="rotate(0 62 78)"/><ellipse cx="62" cy="82" rx="8.5" ry="10.2" fill="#7fd0bd" transform="rotate(0 62 78)"/><ellipse cx="138" cy="78" rx="17" ry="17" fill="#9fe3d3" transform="rotate(0 138 78)"/><ellipse cx="138" cy="82" rx="8.5" ry="10.2" fill="#7fd0bd" transform="rotate(0 138 78)"/>
 <ellipse cx="100" cy="182" rx="52" ry="8" fill="#2a2140" opacity=".08"/>
 <rect x="48" y="70" width="104" height="104" rx="46" fill="#9fe3d3"/>
 <path d="M44 82 Q100 36 156 82 L156 92 Q100 70 44 92 Z" fill="#f26a1b"/><circle cx="100" cy="50" r="9" fill="#ffd84d"/><ellipse cx="100" cy="128" rx="22" ry="16" fill="#d3f4ec"/>
-<ellipse cx="78" cy="112" rx="7" ry="9" fill="#2a2140"/><ellipse cx="122" cy="112" rx="7" ry="9" fill="#2a2140"/>
+<ellipse cx="78" cy="112" rx="7" ry="9" class="eye" fill="#2a2140"/><ellipse cx="122" cy="112" rx="7" ry="9" class="eye" fill="#2a2140"/>
 <circle cx="80" cy="108" r="2.5" fill="#fff"/><circle cx="124" cy="108" r="2.5" fill="#fff"/>
 <ellipse cx="66" cy="132" rx="9" ry="6" fill="#f0629b" opacity=".45"/><ellipse cx="134" cy="132" rx="9" ry="6" fill="#f0629b" opacity=".45"/>
 <ellipse cx="100" cy="122" rx="5" ry="3.5" fill="#2a2140"/>
