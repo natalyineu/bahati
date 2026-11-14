@@ -6,13 +6,17 @@
   <title>Bahati Language School – Spanish, Chinese, Polish, Russian</title>
   <meta name="description" content="Learn Spanish, Chinese, Polish or Russian with Bahati Language School. Small groups and private lessons for every level.">
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap&subset=latin,latin-ext,cyrillic" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <a class="logo" href="#top" aria-label="Bahati Language School"><img src="images/logo-word.jpg" alt="Bahati" width="120" height="52"></a>
-    <nav>
+    <nav aria-label="Main">
       <a href="#languages">Languages</a>
+      <a href="#why">Why Bahati</a>
       <a href="#how">How it works</a>
       <a href="#levels">Levels</a>
       <a href="#trial" class="btn btn-small">Free trial</a>
@@ -21,81 +25,124 @@
 
   <main id="top">
     <section class="hero">
-      <img class="hero-logo" src="images/logo-hero.jpg" alt="Bahati logo: colorful fireworks" width="1000" height="707">
-      <h1>Speak a new language with confidence</h1>
-      <p>Spanish, Chinese, Polish and Russian, taught by dedicated teachers in small groups or one-to-one.</p>
-      <a href="#trial" class="btn">Book a free trial lesson</a>
+      <div class="hero-text">
+        <p class="eyebrow">Language school</p>
+        <h1>Speak a new language <span class="accent">with confidence</span></h1>
+        <p class="lead">Spanish, Chinese, Polish and Russian, taught in small groups or one-to-one, from your first word to fluent conversation.</p>
+        <div class="hero-actions">
+          <a href="#trial" class="btn">Book a free trial lesson</a>
+          <a href="#languages" class="btn btn-ghost">Explore languages</a>
+        </div>
+        <ul class="greetings" aria-label="Hello in our languages">
+          <li lang="es">¡Hola!</li>
+          <li lang="zh">你好</li>
+          <li lang="pl">Cześć!</li>
+          <li lang="ru">Привет!</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <img src="images/logo-hero.jpg" alt="Bahati logo: colorful fireworks" width="1000" height="707">
+      </div>
     </section>
 
-    <section id="languages">
-      <h2>Our languages</h2>
+    <section id="languages" class="reveal">
+      <p class="eyebrow">Four languages, one school</p>
+      <h2>Choose your language</h2>
       <div class="cards">
-        <article class="card">
-          <p class="hello" lang="es">¡Hola!</p>
+        <article class="card c-es">
+          <span class="glyph" lang="es">Ñ</span>
           <h3>Spanish</h3>
           <p>Español for travel, work and everyday conversation.</p>
+          <a href="#trial" data-lang="Spanish">Try a lesson →</a>
         </article>
-        <article class="card">
-          <p class="hello" lang="zh">你好!</p>
+        <article class="card c-zh">
+          <span class="glyph" lang="zh">中</span>
           <h3>Chinese</h3>
-          <p>Mandarin with pinyin, tones and characters step by step.</p>
+          <p>Mandarin with pinyin, tones and characters, step by step.</p>
+          <a href="#trial" data-lang="Chinese">Try a lesson →</a>
         </article>
-        <article class="card">
-          <p class="hello" lang="pl">Cześć!</p>
+        <article class="card c-pl">
+          <span class="glyph" lang="pl">Ł</span>
           <h3>Polish</h3>
           <p>Polski from first words to confident grammar.</p>
+          <a href="#trial" data-lang="Polish">Try a lesson →</a>
         </article>
-        <article class="card">
-          <p class="hello" lang="ru">Привет!</p>
+        <article class="card c-ru">
+          <span class="glyph" lang="ru">Я</span>
           <h3>Russian</h3>
-          <p>Русский, including the Cyrillic alphabet from day one.</p>
+          <p>Русский, with the Cyrillic alphabet from day one.</p>
+          <a href="#trial" data-lang="Russian">Try a lesson →</a>
         </article>
       </div>
     </section>
 
-    <section id="how" class="alt">
+    <section id="why" class="alt reveal">
+      <div class="inner">
+        <p class="eyebrow">Why Bahati</p>
+        <h2>Learning that feels good</h2>
+        <div class="features">
+          <div><span class="dot d1"></span><h3>Small groups</h3><p>Everyone gets time to speak, and nobody gets lost.</p></div>
+          <div><span class="dot d2"></span><h3>Private lessons</h3><p>One-to-one attention shaped around your goals.</p></div>
+          <div><span class="dot d3"></span><h3>Every level</h3><p>From complete beginner to advanced speaker.</p></div>
+          <div><span class="dot d4"></span><h3>Free trial</h3><p>Try a lesson first and see if it is right for you.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="reveal">
+      <p class="eyebrow">Getting started</p>
       <h2>How it works</h2>
       <ol class="steps">
-        <li><strong>Book a trial.</strong> Tell us your language and goals.</li>
-        <li><strong>Get placed.</strong> We find the right level and format for you.</li>
-        <li><strong>Start learning.</strong> Choose a small group or private lessons.</li>
+        <li><span class="num">1</span><div><h3>Book a trial</h3><p>Tell us your language and goals.</p></div></li>
+        <li><span class="num">2</span><div><h3>Get placed</h3><p>We find the right level and format for you.</p></div></li>
+        <li><span class="num">3</span><div><h3>Start learning</h3><p>Choose a small group or private lessons.</p></div></li>
       </ol>
     </section>
 
-    <section id="levels">
-      <h2>Every level</h2>
-      <ul class="levels">
-        <li><strong>Beginner (A1–A2)</strong> Start from zero.</li>
-        <li><strong>Intermediate (B1–B2)</strong> Speak and understand more freely.</li>
-        <li><strong>Advanced (C1+)</strong> Polish fluency and nuance.</li>
-      </ul>
+    <section id="levels" class="alt reveal">
+      <div class="inner">
+        <p class="eyebrow">For everyone</p>
+        <h2>Every level</h2>
+        <div class="levels">
+          <div class="level"><span class="badge">A1–A2</span><h3>Beginner</h3><p>Start from zero.</p></div>
+          <div class="level"><span class="badge">B1–B2</span><h3>Intermediate</h3><p>Speak and understand more freely.</p></div>
+          <div class="level"><span class="badge">C1+</span><h3>Advanced</h3><p>Polish fluency and nuance.</p></div>
+        </div>
+      </div>
     </section>
 
-    <section id="trial" class="alt">
-      <h2>Book a free trial lesson</h2>
-      <form id="trial-form" novalidate>
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required>
+    <section id="trial" class="reveal">
+      <div class="trial-box">
+        <div>
+          <p class="eyebrow">Ready when you are</p>
+          <h2>Book a free trial lesson</h2>
+          <p>Leave your details and we will get in touch to arrange your first lesson.</p>
+        </div>
+        <form id="trial-form" novalidate>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
 
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
 
-        <label for="language">Language</label>
-        <select id="language" name="language" required>
-          <option value="">Choose…</option>
-          <option>Spanish</option>
-          <option>Chinese</option>
-          <option>Polish</option>
-          <option>Russian</option>
-        </select>
+          <label for="language">Language</label>
+          <select id="language" name="language" required>
+            <option value="">Choose…</option>
+            <option>Spanish</option>
+            <option>Chinese</option>
+            <option>Polish</option>
+            <option>Russian</option>
+          </select>
 
-        <button type="submit" class="btn">Request trial</button>
-        <p id="form-msg" role="status"></p>
-      </form>
+          <button type="submit" class="btn">Request trial</button>
+          <p id="form-msg" role="status"></p>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer>
+    <img src="images/favicon.png" alt="" width="32" height="32">
     <p>&copy; 2026 Bahati Language School</p>
   </footer>
 
