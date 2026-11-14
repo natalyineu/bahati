@@ -1,14 +1,17 @@
-let count = 0;
-const btn = document.getElementById("counter-btn");
+const form = document.getElementById("trial-form");
+const msg = document.getElementById("form-msg");
 
-btn.addEventListener("click", () => {
-  count += 1;
-  btn.textContent = `Clicked ${count} ${count === 1 ? "time" : "times"}`;
-});
-
-document.getElementById("signup").addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const email = document.getElementById("email").value.trim();
-  const msg = document.getElementById("signup-msg");
-  msg.textContent = email ? `Thanks, ${email} is signed up!` : "Please enter an email.";
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const language = form.language.value;
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!name || !emailOk || !language) {
+    msg.textContent = "Please fill in your name, a valid email and a language.";
+    return;
+  }
+  msg.textContent = `Thanks, ${name}! We'll contact you about your ${language} trial lesson.`;
+  form.reset();
 });

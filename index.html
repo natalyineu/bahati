@@ -3,35 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bahati Test Site</title>
+  <title>Bahati Language School – Spanish, Chinese, Polish, Russian</title>
+  <meta name="description" content="Learn Spanish, Chinese, Polish or Russian with Bahati Language School. Small groups and private lessons for every level.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Welcome to Bahati</h1>
+  <header class="site-header">
+    <a class="logo" href="#top">Bahati</a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="#languages">Languages</a>
+      <a href="#how">How it works</a>
+      <a href="#levels">Levels</a>
+      <a href="#trial" class="btn btn-small">Free trial</a>
     </nav>
   </header>
 
-  <main>
-    <h2>Test Website</h2>
-    <p>A simple, working test site.</p>
-    <button id="counter-btn" type="button">Clicked 0 times</button>
+  <main id="top">
+    <section class="hero">
+      <h1>Speak a new language with confidence</h1>
+      <p>Spanish, Chinese, Polish and Russian, taught by dedicated teachers in small groups or one-to-one.</p>
+      <a href="#trial" class="btn">Book a free trial lesson</a>
+    </section>
 
-    <h3>Sign up</h3>
-    <form id="signup">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required>
-      <button type="submit">Join</button>
-      <p id="signup-msg" role="status"></p>
-    </form>
+    <section id="languages">
+      <h2>Our languages</h2>
+      <div class="cards">
+        <article class="card">
+          <p class="hello" lang="es">¡Hola!</p>
+          <h3>Spanish</h3>
+          <p>Español for travel, work and everyday conversation.</p>
+        </article>
+        <article class="card">
+          <p class="hello" lang="zh">你好!</p>
+          <h3>Chinese</h3>
+          <p>Mandarin with pinyin, tones and characters step by step.</p>
+        </article>
+        <article class="card">
+          <p class="hello" lang="pl">Cześć!</p>
+          <h3>Polish</h3>
+          <p>Polski from first words to confident grammar.</p>
+        </article>
+        <article class="card">
+          <p class="hello" lang="ru">Привет!</p>
+          <h3>Russian</h3>
+          <p>Русский, including the Cyrillic alphabet from day one.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how" class="alt">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><strong>Book a trial.</strong> Tell us your language and goals.</li>
+        <li><strong>Get placed.</strong> We find the right level and format for you.</li>
+        <li><strong>Start learning.</strong> Choose a small group or private lessons.</li>
+      </ol>
+    </section>
+
+    <section id="levels">
+      <h2>Every level</h2>
+      <ul class="levels">
+        <li><strong>Beginner (A1–A2)</strong> Start from zero.</li>
+        <li><strong>Intermediate (B1–B2)</strong> Speak and understand more freely.</li>
+        <li><strong>Advanced (C1+)</strong> Polish fluency and nuance.</li>
+      </ul>
+    </section>
+
+    <section id="trial" class="alt">
+      <h2>Book a free trial lesson</h2>
+      <form id="trial-form" novalidate>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="language">Language</label>
+        <select id="language" name="language" required>
+          <option value="">Choose…</option>
+          <option>Spanish</option>
+          <option>Chinese</option>
+          <option>Polish</option>
+          <option>Russian</option>
+        </select>
+
+        <button type="submit" class="btn">Request trial</button>
+        <p id="form-msg" role="status"></p>
+      </form>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Bahati. All rights reserved.</p>
+    <p>&copy; 2026 Bahati Language School</p>
   </footer>
 
   <script src="script.js"></script>
