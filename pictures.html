@@ -27,6 +27,9 @@
       <div class="picker">
         <p class="pick-title">I want to learn</p>
         <div id="chips-to" class="chips"></div>
+        <p class="pick-title">Level</p>
+        <div id="chips-lvl" class="chips"></div>
+        <p id="lvl-desc" class="lvl-desc"></p>
         <label class="toggle"><input type="checkbox" id="hint"> Show English hint under the word</label>
         <div class="end-actions"><button id="play" class="btn game-btn">Start</button></div>
       </div>
@@ -59,7 +62,8 @@
         <span class="pill">⭐ <b id="end-xp">0</b> XP</span>
       </div>
       <div class="end-actions">
-        <button id="again" class="btn">Play again</button>
+        <button id="next-level" class="btn" hidden>Next level →</button>
+        <button id="again" class="btn btn-ghost">Play again</button>
         <a class="btn btn-ghost" href="index.html#trial">Book a free lesson</a>
       </div>
     </section>

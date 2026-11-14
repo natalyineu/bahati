@@ -19,15 +19,47 @@ const WORDS = [
   { en: "please", es: "por favor", zh: "请", pl: "proszę", ru: "пожалуйста", py: "qǐng" },
   { en: "friend", es: "amigo", zh: "朋友", pl: "przyjaciel", ru: "друг", py: "péngyou" },
   { en: "apple", es: "manzana", zh: "苹果", pl: "jabłko", ru: "яблоко", py: "píngguǒ" },
-  { en: "goodbye", es: "adiós", zh: "再见", pl: "do widzenia", ru: "до свидания", py: "zàijiàn" }
+  { en: "goodbye", es: "adiós", zh: "再见", pl: "do widzenia", ru: "до свидания", py: "zàijiàn" },
+  // level 2: everyday phrases
+  { lvl: 2, en: "good morning", es: "buenos días", zh: "早上好", pl: "dzień dobry", ru: "доброе утро", py: "zǎoshang hǎo" },
+  { lvl: 2, en: "good night", es: "buenas noches", zh: "晚安", pl: "dobranoc", ru: "спокойной ночи", py: "wǎn'ān" },
+  { lvl: 2, en: "how are you?", es: "¿cómo estás?", zh: "你好吗", pl: "jak się masz?", ru: "как дела?", py: "nǐ hǎo ma" },
+  { lvl: 2, en: "I love you", es: "te quiero", zh: "我爱你", pl: "kocham cię", ru: "я тебя люблю", py: "wǒ ài nǐ" },
+  { lvl: 2, en: "sorry", es: "lo siento", zh: "对不起", pl: "przepraszam", ru: "извините", py: "duìbuqǐ" },
+  { lvl: 2, en: "I don't understand", es: "no entiendo", zh: "我不明白", pl: "nie rozumiem", ru: "я не понимаю", py: "wǒ bù míngbai" },
+  { lvl: 2, en: "how much is it?", es: "¿cuánto cuesta?", zh: "多少钱", pl: "ile to kosztuje?", ru: "сколько стоит?", py: "duōshao qián" },
+  { lvl: 2, en: "welcome", es: "bienvenido", zh: "欢迎", pl: "witaj", ru: "добро пожаловать", py: "huānyíng" },
+  { lvl: 2, en: "delicious", es: "delicioso", zh: "好吃", pl: "pyszne", ru: "вкусно", py: "hǎochī" },
+  { lvl: 2, en: "where?", es: "¿dónde?", zh: "在哪里", pl: "gdzie?", ru: "где?", py: "zài nǎlǐ" },
+  // level 3: longer sentences
+  { lvl: 3, en: "nice to meet you", es: "mucho gusto", zh: "很高兴认识你", pl: "miło mi cię poznać", ru: "приятно познакомиться", py: "hěn gāoxìng rènshi nǐ" },
+  { lvl: 3, en: "I want water", es: "quiero agua", zh: "我要水", pl: "chcę wody", ru: "я хочу воды", py: "wǒ yào shuǐ" },
+  { lvl: 3, en: "do you speak English?", es: "¿hablas inglés?", zh: "你会说英语吗", pl: "czy mówisz po angielsku?", ru: "ты говоришь по-английски?", py: "nǐ huì shuō yīngyǔ ma" },
+  { lvl: 3, en: "where is the toilet?", es: "¿dónde está el baño?", zh: "洗手间在哪里", pl: "gdzie jest toaleta?", ru: "где туалет?", py: "xǐshǒujiān zài nǎlǐ" },
+  { lvl: 3, en: "see you tomorrow", es: "hasta mañana", zh: "明天见", pl: "do jutra", ru: "до завтра", py: "míngtiān jiàn" },
+  { lvl: 3, en: "I like coffee", es: "me gusta el café", zh: "我喜欢咖啡", pl: "lubię kawę", ru: "я люблю кофе", py: "wǒ xǐhuan kāfēi" },
+  { lvl: 3, en: "I am learning", es: "estoy aprendiendo", zh: "我在学习", pl: "uczę się", ru: "я учусь", py: "wǒ zài xuéxí" },
+  { lvl: 3, en: "help!", es: "¡ayuda!", zh: "救命", pl: "pomocy!", ru: "помогите!", py: "jiùmìng" },
+  { lvl: 3, en: "cheers!", es: "¡salud!", zh: "干杯", pl: "na zdrowie!", ru: "за здоровье!", py: "gānbēi" },
+  { lvl: 3, en: "good luck", es: "buena suerte", zh: "祝你好运", pl: "powodzenia", ru: "удачи", py: "zhù nǐ hǎoyùn" }
+];
+WORDS.forEach((w) => { if (!w.lvl) w.lvl = 1; });
+const LEVELS = [
+  { id: 1, emoji: "🌱", name: "Easy", pool: [1], single: 6, match: 1, opts: 3, hearts: 5, time: 0, desc: "Basic words · 3 choices · 5 hearts" },
+  { id: 2, emoji: "🌿", name: "Medium", pool: [1, 2], single: 8, match: 2, opts: 4, hearts: 5, time: 0, desc: "Words and phrases · 4 choices · 5 hearts" },
+  { id: 3, emoji: "🔥", name: "Hard", pool: [2, 3], single: 10, match: 2, opts: 4, hearts: 4, time: 15, desc: "Phrases and sentences · 15 s per question · 4 hearts" },
+  { id: 4, emoji: "💀", name: "Expert", pool: [1, 2, 3], single: 12, match: 3, opts: 4, hearts: 3, time: 10, noPinyin: true, desc: "Everything · 10 s per question · no pinyin · 3 hearts" }
 ];
 const MAX_HEARTS = 5;
 const $ = (id) => document.getElementById(id);
 const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const word = (w, lang) => w[lang];
-const label = (w, lang) => (lang === "zh" ? `${w.zh} (${w.py})` : w[lang]);
+const label = (w, lang, full) => (lang === "zh" && (full || !(st && st.lvl.noPinyin)) ? `${w.zh} (${w.py})` : w[lang]);
 
 let st = null;
+const lvlOf = (n) => LEVELS[Math.max(0, Math.min(LEVELS.length - 1, n - 1))];
+let unlocked = Math.max(1, Math.min(LEVELS.length, parseInt(store("bahati-unlocked"), 10) || 1));
+let level = Math.min(unlocked, parseInt(store("bahati-level"), 10) || 1);
 let pick = { from: SOURCES.includes(store("bahati-from")) ? store("bahati-from") : "en", to: TARGETS.includes(store("bahati-to")) ? store("bahati-to") : "es" };
 if (pick.from === pick.to) pick.to = TARGETS.find((l) => l !== pick.from);
 
@@ -74,7 +106,24 @@ function paintPicker() {
     c.disabled = c.dataset.group === "to" ? c.dataset.lang === pick.from : c.dataset.lang === pick.to;
   });
   $("pair-label").textContent = `${LANGS[pick.from].name} → ${LANGS[pick.to].name}`;
+  paintLevels();
   store("bahati-from", pick.from); store("bahati-to", pick.to);
+}
+function paintLevels() {
+  const box = $("chips-lvl");
+  box.innerHTML = "";
+  LEVELS.forEach((L) => {
+    const b = document.createElement("button");
+    const locked = L.id > unlocked;
+    const stars = parseInt(store("bahati-lvl-stars-" + L.id), 10) || 0;
+    b.type = "button"; b.className = "chip lvl-chip" + (L.id === level ? " on" : "");
+    b.disabled = locked; b.dataset.level = L.id; b.setAttribute("aria-pressed", String(L.id === level));
+    b.innerHTML = `<span class="glyph">${locked ? "🔒" : L.emoji}</span><b>${L.name}</b>` + (stars ? `<span class="mini-stars">${"★".repeat(stars)}</span>` : "");
+    b.addEventListener("click", () => { Sound.unlock(); Sound.sfx("pop"); level = L.id; store("bahati-level", String(level)); paintLevels(); });
+    box.appendChild(b);
+  });
+  $("lvl-desc").textContent = lvlOf(level).desc;
+  $("pair-label").textContent = `${LANGS[pick.from].name} → ${LANGS[pick.to].name} · ${lvlOf(level).name}`;
 }
 SOURCES.forEach((l) => $("chips-from").appendChild(chip(l, "from")));
 TARGETS.forEach((l) => $("chips-to").appendChild(chip(l, "to")));
@@ -86,25 +135,28 @@ function randomPair() {
   pick.from = f; pick.to = t; paintPicker();
 }
 
-function buildQueue() {
-  const pool = shuffle(WORDS);
+function buildQueue(L) {
+  const pool = shuffle(WORDS.filter((w) => L.pool.includes(w.lvl)));
+  const half = Math.ceil(L.single / 2);
   const queue = [];
-  pool.slice(0, 4).forEach((w) => queue.push({ type: "toFrom", w }));   // show target word, answer in source language
-  pool.slice(4, 8).forEach((w) => queue.push({ type: "fromTo", w }));   // show source word, answer in target language
-  const singles = shuffle(queue);
-  return singles.concat([{ type: "match", words: shuffle(WORDS).slice(0, 4) }, { type: "match", words: shuffle(WORDS).slice(0, 4) }]);
+  pool.slice(0, half).forEach((w) => queue.push({ type: "toFrom", w }));
+  pool.slice(half, L.single).forEach((w) => queue.push({ type: "fromTo", w }));
+  const out = shuffle(queue);
+  for (let n = 0; n < L.match; n++) out.push({ type: "match", words: shuffle(pool).slice(0, 4) });
+  return out;
 }
 
 function start() {
   Sound.unlock(); Sound.startMusic();
-  st = { from: pick.from, to: pick.to, queue: buildQueue(), i: 0, hearts: MAX_HEARTS, xp: 0, correct: 0, tried: 0, combo: 0, selected: null, answered: false, pairs: null };
+  const L = lvlOf(level);
+  st = { lvl: L, from: pick.from, to: pick.to, queue: buildQueue(L), i: 0, hearts: L.hearts, xp: 0, correct: 0, tried: 0, combo: 0, selected: null, answered: false, pairs: null };
   updateStreak();
   show("screen-lesson");
   render();
 }
 
 function renderHearts() {
-  $("hearts").textContent = "❤".repeat(st.hearts) + "♡".repeat(MAX_HEARTS - st.hearts);
+  $("hearts").textContent = "❤".repeat(st.hearts) + "♡".repeat(st.lvl.hearts - st.hearts);
   $("hearts").setAttribute("aria-label", st.hearts + " hearts left");
 }
 function setProgress() {
@@ -146,6 +198,7 @@ function render() {
   check.textContent = "Check"; check.disabled = true; check.style.visibility = "";
   const question = $("question"), options = $("options");
   question.innerHTML = ""; options.innerHTML = ""; options.className = "options";
+  stopTimer();
   const { from, to } = st;
 
   if (q.type === "toFrom" || q.type === "fromTo") {
@@ -157,7 +210,7 @@ function render() {
     const t = document.createElement("div");
     const main = document.createElement("span"); main.textContent = q.w[shownLang]; main.lang = shownLang;
     t.appendChild(main);
-    if (shownLang === "zh") { const s = document.createElement("small"); s.textContent = q.w.py; t.appendChild(s); }
+    if (shownLang === "zh" && !st.lvl.noPinyin) { const s = document.createElement("small"); s.textContent = q.w.py; t.appendChild(s); }
     question.appendChild(t);
     if ("speechSynthesis" in window) {
       const sp = document.createElement("button");
@@ -165,7 +218,7 @@ function render() {
       sp.addEventListener("click", () => speak(q.w[shownLang], shownLang));
       question.appendChild(sp);
     }
-    const others = shuffle(WORDS.filter((w) => w !== q.w)).slice(0, 3);
+    const others = shuffle(WORDS.filter((w) => w !== q.w && st.lvl.pool.includes(w.lvl))).slice(0, st.lvl.opts - 1);
     shuffle([q.w, ...others]).forEach((w) => {
       const correct = w === q.w;
       const b = optionButton(label(w, answerLang), answerLang, (btn) => {
@@ -179,6 +232,7 @@ function render() {
       b.dataset.correct = String(correct);
       options.appendChild(b);
     });
+    startTimer();
   } else {
     $("prompt").textContent = `Match ${LANGS[from].name} with ${LANGS[to].name}`;
     options.className = "options match";
@@ -193,6 +247,34 @@ function render() {
       });
     }
   }
+}
+
+let qTimer = null;
+function stopTimer() { clearInterval(qTimer); qTimer = null; $("qtimer").hidden = true; }
+function startTimer() {
+  const secs = st.lvl.time;
+  if (!secs) return;
+  const box = $("qtimer"), fill = $("qtimer-fill");
+  box.hidden = false; fill.style.width = "100%"; fill.classList.remove("low");
+  const t0 = Date.now();
+  qTimer = setInterval(() => {
+    const left = Math.max(0, 1 - (Date.now() - t0) / (secs * 1000));
+    fill.style.width = left * 100 + "%";
+    fill.classList.toggle("low", left < 0.3);
+    if (left <= 0) timeUp();
+  }, 100);
+}
+function timeUp() {
+  stopTimer();
+  if (st.answered) return;
+  st.answered = true; st.tried++;
+  $("options").querySelectorAll(".option").forEach((o) => { o.style.pointerEvents = "none"; if (o.dataset.correct === "true") o.classList.add("right"); });
+  const w = st.queue[st.i].w;
+  setFeedback("bad", "Time's up! ⏰", `Correct answer: ${label(w, st.from, true)} = ${label(w, st.to, true)}`);
+  Sound.sfx("bad"); oops();
+  loseHeart();
+  if (st.hearts <= 0) return;
+  $("check").disabled = false; $("check").textContent = "Continue";
 }
 
 function pickPair(btn, c) {
@@ -255,11 +337,12 @@ function onCheck() {
     return render();
   }
   if (!st.selected) return;
+  stopTimer();
   st.answered = true; st.tried++;
   const opts = $("options").querySelectorAll(".option");
   opts.forEach((o) => { o.style.pointerEvents = "none"; });
   const w = q.w;
-  const summary = `${label(w, st.from)} = ${label(w, st.to)}`;
+  const summary = `${label(w, st.from, true)} = ${label(w, st.to, true)}`;
   if (st.selected.correct) {
     st.correct++; st.combo++;
     const gain = 10 + (st.combo >= 3 ? 5 : 0);
@@ -283,6 +366,7 @@ function onCheck() {
 
 function finish(won) {
   const acc = st.tried ? Math.round((st.correct / st.tried) * 100) : 0;
+  stopTimer();
   const best = parseInt(store("bahati-best-xp"), 10) || 0;
   if (st.xp > best) store("bahati-best-xp", String(st.xp));
   $("end-title").textContent = won ? "Lesson complete! 🎉" : "Out of hearts 💔";
@@ -291,6 +375,15 @@ function finish(won) {
     : "Even bunnies need a nap. Try again, you will do better!";
   $("end-mascot").src = won ? "images/bunny.svg" : "images/panda.svg";
   $("end-xp").textContent = st.xp; $("end-acc").textContent = acc; $("end-hearts").textContent = st.hearts;
+  const stars = won ? (acc >= 90 ? 3 : acc >= 70 ? 2 : 1) : 0;
+  $("end-stars").textContent = won ? "★".repeat(stars) + "☆".repeat(3 - stars) : "";
+  const prev = parseInt(store("bahati-lvl-stars-" + st.lvl.id), 10) || 0;
+  if (stars > prev) store("bahati-lvl-stars-" + st.lvl.id, String(stars));
+  const next = $("next-level"); next.hidden = true;
+  if (won && st.lvl.id < LEVELS.length) {
+    if (st.lvl.id + 1 > unlocked) { unlocked = st.lvl.id + 1; store("bahati-unlocked", String(unlocked)); $("end-sub").textContent += ` New level unlocked: ${lvlOf(unlocked).name} ${lvlOf(unlocked).emoji}`; }
+    next.hidden = false;
+  }
   show("screen-end");
   Sound.sfx(won ? "win" : "lose");
   $("end-mascot").className = "mascot-big " + (won ? "dance" : "sad");
@@ -316,7 +409,8 @@ function confetti() {
 $("play").addEventListener("click", start);
 $("random-pair").addEventListener("click", () => { Sound.unlock(); Sound.sfx("boing"); randomPair(); });
 $("check").addEventListener("click", onCheck);
-$("quit").addEventListener("click", () => { if (confirm("Quit this lesson? Your progress will be lost.")) { refreshStart(); show("screen-start"); } });
+$("quit").addEventListener("click", () => { if (confirm("Quit this lesson? Your progress will be lost.")) { stopTimer(); refreshStart(); show("screen-start"); } });
+$("next-level").addEventListener("click", () => { level = Math.min(unlocked, st.lvl.id + 1); store("bahati-level", String(level)); start(); });
 $("again").addEventListener("click", () => { refreshStart(); show("screen-start"); });
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !$("screen-lesson").hidden && !$("check").disabled && document.activeElement.tagName !== "BUTTON") onCheck();

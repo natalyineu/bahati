@@ -23,7 +23,7 @@
       <a class="btn btn-ghost mode-link" href="pictures.html">🖼️ Try Picture Match</a>
       <img class="mascot-big" src="images/bunny.svg" alt="" width="200" height="200">
       <h1>Word Duel</h1>
-      <p class="sub">Pick any two of our languages, beat 10 questions, keep your hearts and earn XP.</p>
+      <p class="sub">Pick any two of our languages, beat the questions, keep your hearts and earn XP.</p>
       <div class="stats-row">
         <span class="pill" title="Best XP">⭐ Best: <b id="best-xp">0</b></span>
         <span class="pill" title="Days streak">🔥 Streak: <b id="day-streak">0</b></span>
@@ -33,6 +33,9 @@
         <div id="chips-from" class="chips"></div>
         <p class="pick-title">I want to learn</p>
         <div id="chips-to" class="chips"></div>
+        <p class="pick-title">Level</p>
+        <div id="chips-lvl" class="chips"></div>
+        <p id="lvl-desc" class="lvl-desc"></p>
         <p class="pair-label" aria-live="polite"><span id="pair-label"></span></p>
         <div class="end-actions">
           <button id="play" class="btn game-btn">Start</button>
@@ -48,6 +51,7 @@
         <div class="progress" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div>
         <div class="hearts" id="hearts" aria-live="polite"></div>
       </header>
+      <div class="qtimer" id="qtimer" hidden><div id="qtimer-fill"></div></div>
       <div class="lesson-body">
         <p id="prompt" class="prompt"></p>
         <div id="question" class="question"></div>
@@ -64,13 +68,15 @@
       <img id="end-mascot" class="mascot-big" src="images/panda.svg" alt="" width="200" height="200">
       <h1 id="end-title"></h1>
       <p id="end-sub" class="sub"></p>
+      <div id="end-stars" class="stars" aria-label="Stars"></div>
       <div class="stats-row">
         <span class="pill">⭐ <b id="end-xp">0</b> XP</span>
         <span class="pill">🎯 <b id="end-acc">0</b>%</span>
         <span class="pill">❤ <b id="end-hearts">0</b> left</span>
       </div>
       <div class="end-actions">
-        <button id="again" class="btn">Play again</button>
+        <button id="next-level" class="btn" hidden>Next level →</button>
+        <button id="again" class="btn btn-ghost">Play again</button>
         <a class="btn btn-ghost" href="index.html#trial">Book a free lesson</a>
       </div>
     </section>
