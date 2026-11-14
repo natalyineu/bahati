@@ -3,9 +3,9 @@ const msg = document.getElementById("form-msg");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const language = form.language.value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const language = document.getElementById("language").value;
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   if (!name || !emailOk || !language) {
